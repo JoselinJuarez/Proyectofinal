@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\clientesModel;
+use App\Models\Cliente;
 
 class clientesController extends Controller
 {
@@ -25,9 +25,9 @@ class clientesController extends Controller
 
         // Crear el cliente y guardarlo
        // cliente::create($validated);
-
+        Cliente::create($request->all());
         // Redirigir con un mensaje de éxito
-        return redirect()->back()->with('success', 'Cliente registrado con éxito.');
+       // return redirect()->back()->with('success', 'Cliente registrado con éxito.');
 
 
 }
