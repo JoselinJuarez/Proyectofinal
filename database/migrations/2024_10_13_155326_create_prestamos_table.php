@@ -13,14 +13,23 @@ return new class extends Migration
     {
         Schema::create('prestamos', function (Blueprint $table) {
             $table->id('id_prestamos');
-            $table->string('fecha_de_inicio');
-            $table->string ('fecha_de_fin');
+            //$table->string('Nombre');
+            $table->timestamp('fecha_de_inicio')->useCurrent();
+            $table->date('fecha_de_fin');
             //$table->id('id_prestamos');
-            $table->string('montos');
+            $table->integer('montos');
             $table->string ('periodo');
-            $table->string ('var');
-            $table->int('pre_id_cliente');
-           $table->foreign('pre_id_cliente')->references('id_cliente')->on('clientes')->onDelete('cascade');
+            //$table->string ('var');
+            $table->unsignedBigInteger('pre_id_cliente');
+           $table->foreign('pre_id_cliente')
+           ->references('ci')->on
+           ('clientes')->onDelete('cascade');
+
+           //$table->unsignedBigInteger('pre_id_objeto');
+
+          // $table->foreign('pre_id_objeto')
+          // ->references('id_objeto')->on
+          // ('objetos')->onDelete('cascade');
             
 
             $table->timestamps();
