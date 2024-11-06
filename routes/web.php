@@ -54,11 +54,24 @@ Route::get('/editar-{id}',[PrestamosController::class,'edit'])->name('editar.pre
 //Route::get('/editarprestamos', function () {
  ////   return view('editarprestamos');
 //});
+////garantias
 
 Route::get("/garantias",[objetosController::class,'indexgarantia'])->name('garantias');
 //Route::get('/garantias', function () {
  //   return view('garantias');
 //});
+
+Route::post('/crearobjeto',[objetosController::class,'crearobjeto'])->name('create.garantia');
+Route::get('/ircrearobjeto', function () {
+    return view('crearobjeto');
+});
+
+
+Route::get('/pagos', function () {
+    return view('pagos');
+});
+
+
 Route::get('/pagos', function () {
     return view('pagos');
 });
