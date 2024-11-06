@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\Prestamo; // Asegúrate de que el modelo Prestamo esté correctamente importado
+use App\Models\Prestamo;
+use App\Models\Cliente; // 
 
 class PrestamosController extends Controller
 {
@@ -16,11 +17,14 @@ class PrestamosController extends Controller
     public function index()
     {
         // Obtén todos los registros de la tabla "prestamos" usando Eloquent si funciona
-        $prestamos = Prestamo::all();
+        //$prestamos = Prestamo::all();
+        $prestamos = Prestamo::with('cliente')->get();
+
     
         // Retorna la vista "prestamos" con los datos
         return view("prestamos")->with("prestamos", $prestamos);
     }
+    //agregar objetp
     /*public function indexprestamos()
     {
         //
@@ -60,12 +64,14 @@ class PrestamosController extends Controller
 {
     // Crear un nuevo registro de préstamo usando Eloquent si funciona
     $prestamo = new Prestamo();
-    $prestamo->id_prestamos = $request->numero;
-    $prestamo->fecha_de_inicio = $request->inicio;
+    //$prestamo->id_prestamos = $request->numero;
+    $prestamo->pre_id_cliente=$request->nombree;
+   // $prestamo->fecha_de_inicio = $request->inicio;
+   //$prestamo->pre_id_objeto=$request->varr;
     $prestamo->fecha_de_fin = $request->fin;
     $prestamo->montos = $request->monto;
-    $prestamo->periodo = $request->nombree;
-    $prestamo->var = $request->var;
+    $prestamo->periodo = $request->var;
+    //$prestamo->var = $request->var;
 
     // Guardar el registro en la base de datos
     if($prestamo->save()){
@@ -74,7 +80,13 @@ class PrestamosController extends Controller
         return back()->with("incorrecto", "incorrecto");
     }
 }
-   public function edit($id)
+public function createclientt(string $id)
+{
+    $prestamo=Prestamo::find($id);
+    return view("swhowclient",compact("prestamo"));
+    
+}
+   /*public function edit($id)
     {
         $prestamo = Prestamo::findOrFail($id);
         return view('prestamos.edit', compact('prestamo'));
@@ -141,5 +153,12 @@ class PrestamosController extends Controller
     //public function destroy(string $id)
     //{
         //
-    //}
+    //}*/
+    public function edit( $id){
+        //$prestamo=Prestamo::find($id);
+        //return view('editarprestamos', compact('prestamo'));
+        //echo $id;
+
+    }
+
 }
