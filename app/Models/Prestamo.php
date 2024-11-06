@@ -22,7 +22,7 @@ class Prestamo extends Model
 
     public function cliente()
     {
-        return $this->belongsTo(Cliente::class, 'pre_id_cliente', 'id_cliente');
+        return $this->belongsTo(Cliente::class, 'pre_id_cliente', 'ci');
     }
     public function var()
     {
