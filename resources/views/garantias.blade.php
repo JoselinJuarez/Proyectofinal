@@ -186,7 +186,9 @@
 
 <div class="main-content">
     <h1>Garantías</h1>
-    <button class="button-insert">Insertar</button>
+    <a href="/ircrearobjeto"><button href="#" class="button-insert">Insertar</button></a>
+    <button href="prestamosinsertar" type="submit" class="button-insert">Guardar</button>
+    <a href="/insertar"><i class="fas fa-hand-holding-usd"></i><span>Préstamos</span></a>
 
     <div class="table-container">
         <table>
@@ -195,6 +197,7 @@
                     <th>Número</th>
                     <th>Nombre de Objeto</th>
                     <th>Monto</th>
+                    <th>Descripcion</th>
                     <th>Evaluado</th>
                     <th>Estado</th>
                     <th>Ver</th>
@@ -203,26 +206,19 @@
                 </tr>
             </thead>
             <tbody>
+            @foreach($objetos as $objeto )
                 <tr>
-                    <td>1</td>
-                    <td>Vehículo</td>
-                    <td>$20,000</td>
-                    <td>Sí</td>
-                    <td>Activo</td>
+                    <td>{{$objeto->id_objeto}}</td>
+                    <td>{{$objeto->nombre_objeto}}</td>
+                    <td>{{$objeto->monto}}</td>
+                    <td>{{$objeto->descripcion}}</td>
+                    <td>{{$objeto->valor_evaluado}}</td>
+                    <td>{{$objeto->estado}}</td>
                     <td class="action-buttons"><button class="btn-ver">Ver</button></td>
                     <td class="action-buttons"><button class="btn-editar">Editar</button></td>
                     <td class="action-buttons"><button class="btn-eliminar">Eliminar</button></td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Casa</td>
-                    <td>$150,000</td>
-                    <td>Sí</td>
-                    <td>Activo</td>
-                    <td class="action-buttons"><button class="btn-ver">Ver</button></td>
-                    <td class="action-buttons"><button class="btn-editar">Editar</button></td>
-                    <td class="action-buttons"><button class="btn-eliminar">Eliminar</button></td>
-                </tr>
+               @endforeach
             </tbody>
         </table>
     </div>

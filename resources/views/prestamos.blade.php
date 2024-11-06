@@ -186,46 +186,53 @@
 
 <div class="main-content">
     <h1>Préstamos</h1>
-    <button class="button-insert">Insertar</button>
+    <a href="/insertar"><button href="/insertar"class="button-insert">Insertar</button></a>    
+    <!--<a href="/insertar"><i class="fas fa-user-tie"></i><span>Clientes</span></a>!-->
+
+
+
+
+
+
+    
+
 
     <div class="table-container">
         <table>
             <thead>
                 <tr>
                     <th>Número</th>
-                    <th>Nombre de Cliente</th>
+                    <th>Garantia</th>
                     <th>Fecha Inicio</th>
                     <th>Fecha Fin</th>
                     <th>Monto</th>
-                    <th>Periodo</th>
+                    <th>nombre client</th>
                     <th>Ver</th>
                     <th>Editar</th>
                     <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach($prestamos as $prestamo)
                 <tr>
-                    <td>1</td>
-                    <td>Juan Pérez</td>
-                    <td>2023-01-15</td>
-                    <td>2024-01-15</td>
-                    <td>$10,000</td>
-                    <td>12 meses</td>
+                    <td>{{$prestamo->id_prestamos}}</td>
+                    <td>{{$prestamo->Nombre}}</td>
+                    <td>{{$prestamo->fecha_de_inicio}}</td>
+                    <td>{{$prestamo->fecha_de_fin}}</td>
+                    <td>{{$prestamo->montos}}</td>
+                    <td>{{$prestamo->cliente->nombres ?? 'Sin asignar'}}</td>
+                    
+                   
                     <td class="action-buttons"><button class="btn-ver">Ver</button></td>
-                    <td class="action-buttons"><button class="btn-editar">Editar</button></td>
-                    <td class="action-buttons"><button class="btn-eliminar">Eliminar</button></td>
+                    
+                        
+                <td class="action-buttons"><a  href="{{route('editar.prestamos',$prestamo->id_prestamos)}}"> <button class="btn-editar" >Editar</button></a></td>
+
+                    <td  class="action-buttons"><a href="{{route('prestamos.delete',$prestamo->id_prestamos)}}"><button class="btn-eliminar">Eliminar</button></a></td>
+                
+                    
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>María Gómez</td>
-                    <td>2022-07-10</td>
-                    <td>2023-07-10</td>
-                    <td>$5,000</td>
-                    <td>12 meses</td>
-                    <td class="action-buttons"><button class="btn-ver">Ver</button></td>
-                    <td class="action-buttons"><button class="btn-editar">Editar</button></td>
-                    <td class="action-buttons"><button class="btn-eliminar">Eliminar</button></td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -240,3 +247,4 @@
 
 </body>
 </html>
+<!--@enfif clinte id del cliente!-->

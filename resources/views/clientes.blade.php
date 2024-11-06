@@ -186,46 +186,36 @@
 
 <div class="main-content">
     <h1>Clientes</h1>
-    <button class="button-insert">Insertar</button>
+    <a href="/client"><button class="button-insert" href="#" class="button-insert">Insertar</button></a>
 
     <div class="table-container">
         <table>
             <thead>
                 <tr>
-                    <th>Número</th>
+                    <th>Ci</th>
                     <th>Nombres</th>
                     <th>Apellidos</th>
-                    <th>CI</th>
                     <th>Celular</th>
                     <th>Estado</th>
-                    <th>Ver</th>
+                    <th>Ver</th>jkj
                     <th>Editar</th>
                     <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach($clientes as $cliente )
                 <tr>
-                    <td>1</td>
-                    <td>Juan</td>
-                    <td>Pérez</td>
-                    <td>12345678</td>
-                    <td>76543210</td>
-                    <td>Activo</td>
-                    <td class="action-buttons"><button class="btn-ver">Ver</button></td>
-                    <td class="action-buttons"><button class="btn-editar">Editar</button></td>
-                    <td class="action-buttons"><button class="btn-eliminar">Eliminar</button></td>
+               
+                <td>{{$cliente->ci}}</td>
+                <td>{{$cliente->nombres}}</td>
+                <td>{{$cliente->apellidos}}</td>
+                <td>{{$cliente->celular}}</td>
+                <td>{{$cliente->estado}}</td>
+                <td class="action-buttons"><button class="btn-ver">Ver</button></td>   
+                <td class="action-buttons"><button class="btn-editar" >Editar</button></td>
+                <td class="action-buttons"><button class="btn-eliminar">Eliminar</button></td>   
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>María</td>
-                    <td>Gómez</td>
-                    <td>87654321</td>
-                    <td>98765432</td>
-                    <td>Inactivo</td>
-                    <td class="action-buttons"><button class="btn-ver">Ver</button></td>
-                    <td class="action-buttons"><button class="btn-editar">Editar</button></td>
-                    <td class="action-buttons"><button class="btn-eliminar">Eliminar</button></td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

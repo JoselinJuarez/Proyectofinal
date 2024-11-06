@@ -71,9 +71,9 @@
 
 <div class="login-container">
     <h2>Iniciar Sesión</h2>
-    <form action="" method="">
+    <form action="{{route('login.enviar')}} "method="post">
         @csrf
-        <input type="text" name="username" placeholder="Nombre de Usuario" required>
+        <input type="text" name="nombres" placeholder="Nombre de Usuario" required>
         <input type="password" name="password" placeholder="Contraseña" required>
         <input type="submit" value="Ingresar">
     </form>
