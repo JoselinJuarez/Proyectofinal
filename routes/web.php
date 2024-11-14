@@ -21,6 +21,8 @@ Route::get('/clientes', function () {
 //cliente ver
 Route::get('/clientes',[ClientesController::class,'indexclient'])->name('clientes');
 Route::post('/clientes-insertar',[ClientesController::class,'createclient'])->name('clientes.create');
+Route::get('/clientes/edit/{id}',[ClientesController::class,'edit'])->name('clientes.edit');
+Route::put('/clientes/update/{id}',[ClientesController::class,'update'])->name('clientes.actualizar');
 Route::get('/client', function () {
     return view('client');
  });
@@ -50,7 +52,7 @@ Route::get('/insertar', function () {
 });
 //
 
-Route::get('/editar-{id}',[PrestamosController::class,'edit'])->name('editar.prestamos');
+Route::get('/editar/{id}',[PrestamosController::class,'edit'])->name('editar.prestamos');
 //Route::get('/editarprestamos', function () {
  ////   return view('editarprestamos');
 //});
@@ -70,6 +72,7 @@ Route::get('/ircrearobjeto', function () {
 Route::get('/pagos', function () {
     return view('pagos');
 });
+//
 
 
 Route::get('/pagos', function () {
