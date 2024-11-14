@@ -61,7 +61,6 @@ class ClientesController extends Controller
      $cliente->ci = $request->numero;
      $cliente->nombres=$request->nombree;
      $cliente->apellidos= $request->inicio;
-     //$cliente->ci = $request->fin;
      $cliente->celular = $request->monto;
      $cliente->estado = $request->var;
     
@@ -147,12 +146,23 @@ class ClientesController extends Controller
      //{
          //
      //}*/
-     public function edit(){
-         //$iten=Prestamo::find($id);
-         //return view('editarprestamos');
+     public function edit($id){
+         $cliente=Cliente::find($id);
+         return view('clienteditar',compact('cliente'));
          //echo $id;
  
      }
+     public function update(Request $request,$id){
+        $cliente=Cliente::find($id);
+        $cliente->ci = $request->numero;
+        $cliente->nombres=$request->nombree;
+        $cliente->apellidos= $request->inicio;
+        $cliente->celular = $request->monto;
+        $cliente->estado = $request->var;
+        $cliente->save();
+        return to_route('clientes');}
+        
+
      
      
 }
