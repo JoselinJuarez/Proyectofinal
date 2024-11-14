@@ -74,8 +74,3 @@ Route::get('/pagos', function () {
 });
 //
 
-
-Route::get('/pagos', function () {
-    return view('pagos');
-});
-
